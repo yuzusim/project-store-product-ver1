@@ -65,12 +65,14 @@ public class ProductResponse {
         private String name;
         private int price;
         private int qty;
+        private String img;
 
         public MainDTO(Product product) {
             this.id = product.getId();
             this.name = product.getName();
             this.price = product.getPrice();
             this.qty = product.getQty();
+            this.img = product.getImg();
         }
     }
 }

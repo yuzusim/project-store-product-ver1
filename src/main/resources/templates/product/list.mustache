@@ -3,7 +3,7 @@
 <div class="container pt-100 pb-100" style="text-align: center">
     <h2 class="mb-30">상품 목록</h2>
 
-    <table class="table table-striped" style="">
+    <table class="table list-table table-striped" style="">
         <thead>
         <tr>
             <th class="center-align">No</th>
@@ -16,9 +16,14 @@
         <tbody>
         {{#productList}}
             <tr>
-                <input hidden="productId" name="productId">
                 <td>{{id}}</td>
-                <td>{{name}}</td>
+                <td style="">
+                    <div class="d-flex justify-content-center align-items-center save-img-main save-img" id="profilePreview">
+                        <img src="/upload/{{img}}" style="margin: 0 auto !important; text-align: center !important;">
+                    </div>
+                    <div class="mt-10">{{name}}</div>
+
+                </td>
                 <td>{{price}}원</td>
                 <td>{{qty}}개</td>
                 <td><a href="/product/{{id}}" class="product btn btn-warning">상세보기</a></td>

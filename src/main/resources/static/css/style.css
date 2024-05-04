@@ -14,7 +14,16 @@
     border: 1px solid #ddd; color: #ddd;
     overflow: hidden;
 }
+/*상품리스트 메인부분*/
 .save-img img{width:100%;}
+.save-img-main{
+    width: 150px !important; height: 150px !important;
+    margin: 0 auto !important;
+}
+.list-table td{
+    margin: 0 auto !important;
+    vertical-align: middle !important;
+}
 
 .row>* {
     padding-right:0 !important;
