@@ -1,5 +1,6 @@
 package com.example.projectstoreproductver1.product;
 
+import com.example.projectstoreproductver1._core.common.ImgSaveUtil;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,16 @@ import java.util.List;
 @Repository
 public class ProductRepository {
     private final EntityManager em;
+
+    //상품 수정하기
+    public Product updateById(int id, ProductRequest.UpdateDTO reqDTO) {
+        Product product = em.find(Product.class, id);
+        product.setName(reqDTO.getName());
+        product.setPrice(reqDTO.getPrice());
+        product.setQty(reqDTO.getQty());
+        product.setImg(ImgSaveUtil.save(reqDTO.getImg()));
+        return product;
+    }
 
     //상품 상세보기
     public Product findById(int id) {

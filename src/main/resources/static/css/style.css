@@ -1,3 +1,7 @@
+.sub-page{
+    padding: 100px 0;
+}
+
 /*상품등록부분*/
 .prod-info{_border-bottom:1px solid #ddd;}
 .prod-info th{padding: 25px 0;}
@@ -5,6 +9,12 @@
 .prodsave-L {width: 40%;}
 .prodsave-R {width: 60%;}
 .btn-apply{width:300px; padding:10px 0; margin:0 auto;}
+.save-img{
+    width: 400px; height: 400px;
+    border: 1px solid #ddd; color: #ddd;
+    overflow: hidden;
+}
+.save-img img{width:100%;}
 
 .row>* {
     padding-right:0 !important;

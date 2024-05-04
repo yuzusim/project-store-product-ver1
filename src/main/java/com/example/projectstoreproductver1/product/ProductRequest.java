@@ -5,6 +5,15 @@ import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
 public class ProductRequest {
+    //상품 수정
+    @Data
+    public static class UpdateDTO{
+        private String name;
+        private Integer price;
+        private Integer qty;
+        private MultipartFile img;
+    }
+
     //상품 등록
     @Data
     public static class SaveDTO{

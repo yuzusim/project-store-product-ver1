@@ -11,6 +11,13 @@ import java.util.List;
 public class ProductService {
     private final ProductRepository productRepo;
 
+    //상품 수정하기
+    @Transactional
+    public ProductResponse.UpdateDTO updateById(int id, ProductRequest.UpdateDTO reqDTO){
+        Product product = productRepo.updateById(id, reqDTO);
+        return new ProductResponse.UpdateDTO(product);
+    }
+
     //상품 상세보기
     public ProductResponse.DetailDTO findById(int id){
         Product product = productRepo.findById(id);

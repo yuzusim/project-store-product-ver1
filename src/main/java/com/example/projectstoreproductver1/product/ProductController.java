@@ -44,12 +44,15 @@ public class ProductController {
 
     // 상품 수정하기
     @PostMapping("/product/{id}/update")
-    public String update(@PathVariable int id){
-        return "redirect:/product{id}";
+    public String update(@PathVariable int id, ProductRequest.UpdateDTO reqDTO){
+        productService.updateById(id, reqDTO); // 이미지 업데이트를 수행하는 서비스 메서드 호출
+        return "redirect:/product/" + id;
     }
 
     @GetMapping("/product/{id}/update-form")
-    public String updateForm(@PathVariable int id){
+    public String updateForm(@PathVariable int id, HttpServletRequest request){
+        ProductResponse.DetailDTO product = productService.findById(id);
+        request.setAttribute("product", product);
         return "product/update-form";
     }
 
