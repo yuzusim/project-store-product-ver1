@@ -30,7 +30,8 @@ public class ProductController {
 
     //상품 등록하기
     @PostMapping("/product/save")
-    public String save(){
+    public String save(ProductRequest.SaveDTO reqDTO){
+        productService.save(reqDTO);
         return "redirect:/";
     }
 
