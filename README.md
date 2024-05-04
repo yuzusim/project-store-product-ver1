@@ -93,6 +93,7 @@ public class Product {
 ![image](https://github.com/yuzusim/project-store-product-ver1/assets/153582415/2a532c09-e547-498a-9506-696c88c8d10d)
 
 ### 5-2. ProductRepository에 findAll()
+```
 @RequiredArgsConstructor;
 @Repository;
 public class ProductRepository {
@@ -105,9 +106,11 @@ public class ProductRepository {
         return query.getResultList();
     }
 }
+```
 
 ### 5-3. ProductResponse에 MainDTO
 * 저장한 데이터를 화면에 뿌리기위해 ProductResponse를 생성
+```
 public class ProductResponse {
     @Data
     public static class MainDTO{
@@ -124,10 +127,11 @@ public class ProductResponse {
         }
     }
 }
+```
 
 ### 5-4. ProductService findAll() 
 * 엔티티 받아온걸 dto로 변경
-
+```
 @RequiredArgsConstructor
 @Service
 public class ProductService {
@@ -138,9 +142,10 @@ public class ProductService {
         return productList.stream().map(ProductResponse.MainDTO::new).toList();
     }
 }
-  
+```
+ 
 ### 5-5. ProductController list
-
+```
 @RequiredArgsConstructor
 @Controller
 public class ProductController {
@@ -152,6 +157,7 @@ public class ProductController {
         request.setAttribute("productList", productList);
         return "product/list";
     }
+```
 
 ___
 
@@ -161,6 +167,7 @@ ___
 ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a21638a1-cc1f-4c5f-be54-d65c3bb6a357/8e0057f0-2a2a-4754-b40f-0b7f25ec6a94/Untitled.png)
 
 ### 6-1. ProductRepository에 save()
+```
 public class ProductRequest {
     //상품 등록
     @Data
@@ -181,8 +188,10 @@ public class ProductRequest {
         }
     }
 }
+```
 
 ### 6-2. ProductResponse에 SaveDTO
+```
 public class ProductResponse {
 
     //상품 등록
@@ -204,8 +213,10 @@ public class ProductResponse {
     }
 
 }
+```
 
 ### 6-3. ProductService에 save()
+```
 @RequiredArgsConstructor
 @Service
 public class ProductService {
@@ -218,8 +229,10 @@ public class ProductService {
         return new ProductResponse.SaveDTO(product);
     }
 }
+```
 
 ### 6-4. ProductController
+```
 @RequiredArgsConstructor
 @Controller
 public class ProductController {
@@ -237,6 +250,7 @@ public class ProductController {
         return "product/save-form";
     }
 }
+```
 
 ___
 
@@ -246,6 +260,7 @@ ___
 ![image](https://github.com/yuzusim/project-store-product-ver1/assets/153582415/b990bf1e-2825-40c7-90cc-dbf14094ca09)
 
 ### 7-1. ProductRepository에 findById() 
+```
 @RequiredArgsConstructor
 @Repository
 public class ProductRepository {
@@ -256,8 +271,10 @@ public class ProductRepository {
         Product product = em.find(Product.class, id);
         return product;
     }
+```
     
 ### 7-2. ProductRequest에 DetailDTO
+```
 public class ProductResponse {
 
     //상품 상세보기
@@ -277,8 +294,10 @@ public class ProductResponse {
             this.img = product.getImg();
         }
     }
-    
+ ```
+   
 ### 7-3. ProductService에 findById()
+```
 @RequiredArgsConstructor
 @Service
 public class ProductService {
@@ -289,8 +308,10 @@ public class ProductService {
         Product product = productRepo.findById(id);
         return new ProductResponse.DetailDTO(product);
     }
-    
+ ```
+   
 ### 7-4. ProductController 
+```
 @RequiredArgsConstructor
 @Controller
 public class ProductController {
@@ -304,6 +325,7 @@ public class ProductController {
         return "product/detail";
     }
 }
+```
 
 ___
 
@@ -314,6 +336,7 @@ ___
 ![image](https://github.com/yuzusim/project-store-product-ver1/assets/153582415/d7283d9f-35d0-4fff-b3e2-05552e59fac0)
 
 ### 8-2. ProductRequest에 UpdateDTO
+```
 public class ProductRequest {
     //상품 수정
     @Data
@@ -324,8 +347,10 @@ public class ProductRequest {
         private MultipartFile img;
     }
 }
+```
 
 ### 8-3. ProductResponse에 UpdateDTO
+```
 public class ProductResponse {
     //상품 수정
     @Data
@@ -345,8 +370,10 @@ public class ProductResponse {
         }
     }
 }
+```
 
 ### 8-4. ProductRepository에 updateById()
+```
 @RequiredArgsConstructor
 @Repository
 public class ProductRepository {
@@ -361,8 +388,10 @@ public class ProductRepository {
         product.setImg(ImgSaveUtil.save(reqDTO.getImg()));
         return product;
     }
+```
 
 ### 8-5. ProductService에 updateById() 
+```
 @RequiredArgsConstructor
 @Service
 public class ProductService {
@@ -375,8 +404,10 @@ public class ProductService {
         return new ProductResponse.UpdateDTO(product);
     }
 }
+```
 
 ### 8-6. ProductController 
+```
 @RequiredArgsConstructor
 @Controller
 public class ProductController {
@@ -396,7 +427,7 @@ public class ProductController {
         return "product/update-form";
     }
 }
-
+```
 ___
 
 > ## 9. 상품 삭제하기
@@ -405,6 +436,7 @@ ___
 ![image](https://github.com/yuzusim/project-store-product-ver1/assets/153582415/4307696e-da9a-4d7a-a27a-260c4a3f2ae7)
 
 ### 9-2. ProductRepository deleteById()
+```
 @RequiredArgsConstructor
 @Repository
 public class ProductRepository {
@@ -417,8 +449,10 @@ public class ProductRepository {
         query.setParameter("id", id);
         query.executeUpdate();
     }
+```
 
 ### 9-3. ProductService에 deleteById()
+```
 @RequiredArgsConstructor
 @Service
 public class ProductService {
@@ -429,8 +463,10 @@ public class ProductService {
     public void deleteById(int id){
         productRepo.deleteById(id);
     }
-    
-### 9-4. ProductController 
+```
+  
+### 9-4. ProductController
+```
 @RequiredArgsConstructor
 @Controller
 public class ProductController {
@@ -443,4 +479,4 @@ public class ProductController {
         return "redirect:/";
     }
 }
-
+```
