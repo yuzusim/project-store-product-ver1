@@ -43,18 +43,18 @@ ___
 
 > ## 4. Product Entity 생성
 
-package com.example.projectstoreproductver1.product
-import jakarta.persistence.*
-import lombok.Builder
-import lombok.Data
-import lombok.NoArgsConstructor
-import org.hibernate.annotations.CreationTimestamp
-import java.sql.Timestamp
+package com.example.projectstoreproductver1.product;
+import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import java.sql.Timestamp;
 
-@NoArgsConstructor
-@Data
-@Table(name = "product_tb")
-@Entity
+@NoArgsConstructor;
+@Data;
+@Table(name = "product_tb");
+@Entity;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -92,8 +92,8 @@ public class Product {
 ![image](https://github.com/yuzusim/project-store-product-ver1/assets/153582415/2a532c09-e547-498a-9506-696c88c8d10d)
 
 ### 5-2. ProductRepository에 findAll()
-@RequiredArgsConstructor
-@Repository
+@RequiredArgsConstructor;
+@Repository;
 public class ProductRepository {
     private final EntityManager em;
 
