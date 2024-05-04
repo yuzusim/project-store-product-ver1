@@ -1,0 +1,63 @@
+{{> layout/header}}
+
+<div class="container w14 pt-100 pb-100" style="margin: 0 auto;">
+    <form action="/product/1/update" method="post" enctype="multipart/form-data">
+        <div class="d-flex prodsav-W">
+            <!--상품 이미지 수정 등록-->
+            <div class="prodsave-L">
+                <div class="p-3 m-3">
+                    <div class="row">
+                        <div class="d-flex justify-content-center align-items-center"
+                             style="width: 400px; height: 400px; border: 1px solid #ddd; color: #ddd; overflow: hidden"
+                             id="profilePreview">
+                            <img src="/upload" style="width: 100%">
+                        </div>
+                        <!-- 파일 업로드 입력 필드 -->
+                        <input type="file" id="imageUpload" name="img"
+                               class="real-upload mx-auto d-block mt-2 w-50 h-50" accept="image/*" required>
+                    </div>
+                </div>
+            </div>
+            <!--상품 이미지 수정 등록-->
+
+            <!-- 상품 정보 수정 -->
+            <div class="prodsave-R ml-10">
+                <div class="d-flex mb-3 mt-3 row">
+                    <table class="prod-info">
+                        <!--상품명-->
+                        <tr>
+                            <th>상품명</th>
+                            <td>
+                                <input name="name" type="text" class="form-control" value="">
+                            </td>
+                        </tr>
+                        <!--상품명-->
+
+                        <!--상품가격-->
+                        <tr>
+                            <th>상품가격</th>
+                            <td>
+                                <input name="price" type="number" class="form-control price" value="">
+                            </td>
+                        </tr>
+                        <!--상품가격-->
+
+                        <!--상품수량-->
+                        <tr>
+                            <th>상품수량</th>
+                            <td>
+                                <input name="qty" type="number" class="form-control price" value="">
+                            </td>
+                        </tr>
+                        <!--상품수량-->
+                    </table>
+                    <div class="line" style="border-bottom:1px solid #ddd; margin: 50px auto"></div>
+                    <button type="submit" class="btn btn-primary btn-apply">상품수정완료</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+{{> layout/footer}}

@@ -1,0 +1,33 @@
+{{> layout/header}}
+
+<div class="container" style="text-align: center">
+    <h2>상품 목록</h2>
+
+    <table class="table table-hover scroll" style="">
+
+        <tr>
+            <th class="center-align col-1">No</th>
+            <th class="center-align col-5">상품명</th>
+            <th class="center-align col-2">상품가격</th>
+            <th class="center-align col-2">상품수량</th>
+            <th class="center-align col-2">상세보기</th>
+        </tr>
+
+        <tr class="">
+            <th>1</th>
+            <td>바나나</td>
+            <td>5000원</td>
+            <td>1개</td>
+            <td>
+                <div class="new-create-button">
+                    <form action="/product/1">
+                        <button type="submit" class="btn btn-outline-primary">상세보기</button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+
+    </table>
+</div>
+
+{{> layout/footer}}

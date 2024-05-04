@@ -1,0 +1,136 @@
+{{> layout/header}}
+<div class="container w14 sub-page" style="margin: 0 auto;">
+
+<!--상품 상세보기 페이지 시작-->
+    <!--판매자-->
+            <div class="d-flex prodsav-W">
+                <!--상품 이미지-->
+                <div class="prodsave-L">
+                    <div class="p-3 m-3">
+                        <div class="row">
+                            <div class="d-flex justify-content-center align-items-cente saveImg"
+                                 style="" id="profilePreview">
+                                <!-- 이미지를 표시하는 부분 업데이트로 가서 수정한다 -->
+                                <img src="/upload/{{product.img}}" style="max-width: 100%; max-height: 100%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--상품 이미지-->
+
+                <!--상품 수정-->
+                <div class="prodsave-R ml-10">
+                    <div class="d-flex mb-3 mt-3 row">
+                        <table class="prod-info">
+                            <!--상품명-->
+                            <tr>
+                                <th>상품명</th>
+                                <td>
+                                    <input id="name" name="name" type="text" class="form-control"
+                                           value="{{product.name}}" disabled
+                                           style="width: 98%">
+                                </td>
+                                <td>
+                                    <button type="button" onclick="nameSameCheck()"
+                                            class="btn btn-outline-mint ml-10">상품중복체크
+                                    </button>
+                                </td>
+                            </tr>
+                            <!--상품명-->
+
+                            <!--상품가격-->
+                            <tr>
+                                <th>상품가격</th>
+                                <td colspan="2">
+                                    <input name="price" type="number" class="form-control price"
+                                           value="{{product.price}}" disabled
+                                           style="width: 100%">
+                                </td>
+                            </tr>
+                            <!--상품가격-->
+
+                            <!--상품수량-->
+<!--                            <tr>-->
+<!--                                <th>상품수량</th>-->
+<!--                                <td colspan="2">-->
+<!--                                    <input name="qty" type="number" class="form-control col ml-5"-->
+<!--                                           value="{{product.qty}}" disabled>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+                            <!--상품수량-->
+
+                            <!--상품수량-->
+                            <tr>
+                                <th>상품수량</th>
+                                <td colspan="2">
+                                    <!--
+                                    <input name="qty" type="number" class="form-control col ml-5"
+                                           placeholder="상품 수량을 적어주세요">
+                                    -->
+                                    <!-- 상품의 구매 수량만큼 표시됩니다 -->
+
+                                    <div class="quantity-controls d-flex"
+                                         style="width: 100px; text-align: center; margin:0 auto;">
+                                        <button type="button" class="decrease-btn" aria-label="수량내리기" style="border-top-left-radius:8px;">-</button>
+                                        <!--<input type="hidden" name="orderId" value="id}}">-->
+                                        <input type="text" class="quantity" name="orderQty" value="{{product.id}}"
+                                               style="text-align: center; ">
+                                        <button type="button" class="increase-btn" aria-label="수량올리기">+</button>
+                                    </div>
+                                    <!--<div class="" style="text-align: end">재고 수량: product.qty}} </div>-->
+                                </td>
+                            </tr>
+                            <!--상품수량-->
+
+
+                        </table>
+
+                        <div class="line" style="border-bottom:1px solid #ddd; margin: 50px auto"></div>
+
+                        <!--수정,삭제 버튼부분-->
+                        <div class="d-flex" style="justify-content: flex-end">
+                            <span><a href="/product/{{id}}/update-form" class="btn btn-mint" >수정가기</a></span>
+                            <span class="ml-20">
+                                <form action="/product/{{id}}/delete" method="post">
+                                    <button class="btn btn-mint">삭제하기</button>
+	                            </form>
+                        </span>
+                        </div>
+                        <!--수정,삭제 버튼부분-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--상품 상세보기 페이지 완료-->
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // 수량 증가 버튼 클릭 이벤트
+        $(".increase-btn").click(function () {
+            var $quantityInput = $(this).siblings(".quantity");
+            var currentQuantity = parseInt($quantityInput.val());
+            $quantityInput.val(currentQuantity + 1);
+        });
+
+        // 수량 감소 버튼 클릭 이벤트
+        $(".decrease-btn").click(function () {
+            var $quantityInput = $(this).siblings(".quantity");
+            var currentQuantity = parseInt($quantityInput.val());
+            if (currentQuantity > 1) {
+                $quantityInput.val(currentQuantity - 1);
+            }
+        });
+
+        // 재고 수량 계산하여 표시
+        var productQty = parseInt("{{product.qty}}");
+        var orderQty = parseInt($(".quantity").val());
+        var remainingQty = productQty - orderQty;
+        $(".remaining-qty").text("재고 수량: " + remainingQty);
+    });
+</script>
+
+{{> layout/footer}}
+
