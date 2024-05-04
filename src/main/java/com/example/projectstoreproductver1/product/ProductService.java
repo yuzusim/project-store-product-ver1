@@ -11,6 +11,12 @@ import java.util.List;
 public class ProductService {
     private final ProductRepository productRepo;
 
+    //상품 상세보기
+    public ProductResponse.DetailDTO findById(int id){
+        Product product = productRepo.findById(id);
+        return new ProductResponse.DetailDTO(product);
+    }
+
     //상품 등록하기
     @Transactional
     public ProductResponse.SaveDTO save(ProductRequest.SaveDTO reqDTO){

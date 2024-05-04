@@ -30,6 +30,4 @@ $(document).ready(function () {
     });
 
 
-
-
 });

@@ -22,6 +22,5 @@ public class ProductRequest {
                     .qty(qty)
                     .build();
         }
-
     }
 }
