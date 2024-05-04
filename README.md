@@ -42,14 +42,13 @@ ___
 ![image](https://github.com/yuzusim/project-store-product-ver1/assets/153582415/97f25511-7578-4a58-9afa-95008b32dc62)
 
 > ## 4. Product Entity 생성
-package com.example.projectstoreproductver1.product;
 
+package com.example.projectstoreproductver1.product;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
-
 import java.sql.Timestamp;
 
 @NoArgsConstructor
@@ -127,11 +126,11 @@ public class ProductResponse {
 
 ### 5-4. ProductService findAll() 
 * 엔티티 받아온걸 dto로 변경
+
 @RequiredArgsConstructor
 @Service
 public class ProductService {
     private final ProductRepository productRepo;
-
     //상품 목록보기
     public List<ProductResponse.MainDTO> findAll(){
         List<Product> productList = productRepo.findAll();
@@ -140,11 +139,11 @@ public class ProductService {
 }
   
 ### 5-5. ProductController list
+
 @RequiredArgsConstructor
 @Controller
 public class ProductController {
     private final ProductService productService;
-
     //상품목록보기
     @GetMapping({"/"})
     public String list(HttpServletRequest request){
