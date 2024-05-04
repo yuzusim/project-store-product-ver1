@@ -11,6 +11,12 @@ import java.util.List;
 public class ProductService {
     private final ProductRepository productRepo;
 
+    //상품 삭제하기
+    @Transactional
+    public void deleteById(int id){
+        productRepo.deleteById(id);
+    }
+
     //상품 수정하기
     @Transactional
     public ProductResponse.UpdateDTO updateById(int id, ProductRequest.UpdateDTO reqDTO){
