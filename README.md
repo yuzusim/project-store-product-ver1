@@ -16,10 +16,12 @@ ___
 * Mustache
 
 > ## Product 판매자 기능 구현
+
 ### [요구사항]
 * PostRepository, PostService 생성
 * PostRepository는 EntityManager DI 받아서 만들기
 * JPARepository 상속하지 않기
+
 
 ### [핵심 기능 (CRUD)]
 * 상품 목록보기
@@ -28,21 +30,33 @@ ___
 * 상품 수정하기
 * 상품 삭제하기
 
+
 > ## 1. MySQL 연동
 * username : root / password : 1234
   ![image](https://github.com/yuzusim/project-store-product-ver1/assets/153582415/01203bfb-0be1-4655-a43f-eeb96d4add88)
 
+
 * 사용자 생성 및 권한 주기, DB 생성
-  ![image](https://github.com/yuzusim/project-store-product-ver1/assets/153582415/8c6b3875-1776-4142-bb7b-25293fcd4eeb)
+```
+-- 유저 생성 (유저이름@아이피주소)
+create user 'root'@'%' identified by '1234';
+
+-- 해당 유저에게 모든 권한 주기 
+GRANT ALL PRIVILEGES ON store.* TO 'root'@'%';
+CREATE DATABASE store;
+
+use store;
+```
 
 > ## 2. application.yml 설정
 ![image](https://github.com/yuzusim/project-store-product-ver1/assets/153582415/05e4d104-97a8-49a0-b8db-bc643fcb89b4)
 
+
 > ## 3. build.gradle dekpendencies 설정
 ![image](https://github.com/yuzusim/project-store-product-ver1/assets/153582415/97f25511-7578-4a58-9afa-95008b32dc62)
 
-> ## 4. Product Entity 생성
 
+> ## 4. Product Entity 생성
 ```
 package com.example.projectstoreproductver1.product;
 import jakarta.persistence.*;
@@ -87,10 +101,13 @@ public class Product {
 }
 ```
 
+
 > ## 5. 상품 목록보기
+
 
 ### 5-1. 목록보기 화면
 ![image](https://github.com/yuzusim/project-store-product-ver1/assets/153582415/2a532c09-e547-498a-9506-696c88c8d10d)
+
 
 ### 5-2. ProductRepository에 findAll()
 ```
@@ -107,6 +124,7 @@ public class ProductRepository {
     }
 }
 ```
+
 
 ### 5-3. ProductResponse에 MainDTO
 * 저장한 데이터를 화면에 뿌리기위해 ProductResponse를 생성
@@ -129,6 +147,7 @@ public class ProductResponse {
 }
 ```
 
+
 ### 5-4. ProductService findAll() 
 * 엔티티 받아온걸 dto로 변경
 ```
@@ -143,6 +162,7 @@ public class ProductService {
     }
 }
 ```
+
  
 ### 5-5. ProductController list
 ```
@@ -159,12 +179,16 @@ public class ProductController {
     }
 ```
 
+
 ___
+
 
 > ## 6. 상품 등록하기
 
+
 ### 6-1. 상품 등록하기 화면
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a21638a1-cc1f-4c5f-be54-d65c3bb6a357/8e0057f0-2a2a-4754-b40f-0b7f25ec6a94/Untitled.png)
+![image](https://github.com/yuzusim/project-store-product-ver1/assets/153582415/5a912197-3fe3-4fb2-910e-71eef65cf415)
+
 
 ### 6-1. ProductRepository에 save()
 ```
@@ -189,6 +213,7 @@ public class ProductRequest {
     }
 }
 ```
+
 
 ### 6-2. ProductResponse에 SaveDTO
 ```
@@ -215,6 +240,7 @@ public class ProductResponse {
 }
 ```
 
+
 ### 6-3. ProductService에 save()
 ```
 @RequiredArgsConstructor
@@ -230,6 +256,7 @@ public class ProductService {
     }
 }
 ```
+
 
 ### 6-4. ProductController
 ```
@@ -252,9 +279,12 @@ public class ProductController {
 }
 ```
 
+
 ___
 
+
 > ## 7. 상품 상세보기
+
 
 ### 7-1. 상품 상세보기 화면
 ![image](https://github.com/yuzusim/project-store-product-ver1/assets/153582415/b990bf1e-2825-40c7-90cc-dbf14094ca09)
@@ -272,6 +302,7 @@ public class ProductRepository {
         return product;
     }
 ```
+
     
 ### 7-2. ProductRequest에 DetailDTO
 ```
@@ -295,6 +326,7 @@ public class ProductResponse {
         }
     }
  ```
+
    
 ### 7-3. ProductService에 findById()
 ```
@@ -309,6 +341,7 @@ public class ProductService {
         return new ProductResponse.DetailDTO(product);
     }
  ```
+
    
 ### 7-4. ProductController 
 ```
@@ -327,13 +360,17 @@ public class ProductController {
 }
 ```
 
+
 ___
 
+
 > ## 8. 상품 수정하기
+
 
 ### 8-1. 상품 수정하기 화면
 ![image](https://github.com/yuzusim/project-store-product-ver1/assets/153582415/e5fddc81-3ca9-4bf1-ad56-d2575337d52d)
 ![image](https://github.com/yuzusim/project-store-product-ver1/assets/153582415/d7283d9f-35d0-4fff-b3e2-05552e59fac0)
+
 
 ### 8-2. ProductRequest에 UpdateDTO
 ```
@@ -348,6 +385,7 @@ public class ProductRequest {
     }
 }
 ```
+
 
 ### 8-3. ProductResponse에 UpdateDTO
 ```
@@ -372,6 +410,7 @@ public class ProductResponse {
 }
 ```
 
+
 ### 8-4. ProductRepository에 updateById()
 ```
 @RequiredArgsConstructor
@@ -390,6 +429,7 @@ public class ProductRepository {
     }
 ```
 
+
 ### 8-5. ProductService에 updateById() 
 ```
 @RequiredArgsConstructor
@@ -405,6 +445,7 @@ public class ProductService {
     }
 }
 ```
+
 
 ### 8-6. ProductController 
 ```
@@ -428,12 +469,16 @@ public class ProductController {
     }
 }
 ```
+
 ___
+
 
 > ## 9. 상품 삭제하기
 
+
 ### 9-1. 상품 삭제하기 화면
 ![image](https://github.com/yuzusim/project-store-product-ver1/assets/153582415/4307696e-da9a-4d7a-a27a-260c4a3f2ae7)
+
 
 ### 9-2. ProductRepository deleteById()
 ```
@@ -451,6 +496,7 @@ public class ProductRepository {
     }
 ```
 
+
 ### 9-3. ProductService에 deleteById()
 ```
 @RequiredArgsConstructor
@@ -464,6 +510,7 @@ public class ProductService {
         productRepo.deleteById(id);
     }
 ```
+
   
 ### 9-4. ProductController
 ```
