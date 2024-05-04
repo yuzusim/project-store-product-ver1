@@ -43,6 +43,7 @@ ___
 
 > ## 4. Product Entity 생성
 
+```
 package com.example.projectstoreproductver1.product;
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -51,10 +52,10 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import java.sql.Timestamp;
 
-@NoArgsConstructor;
-@Data;
-@Table(name = "product_tb");
-@Entity;
+@NoArgsConstructor
+@Data
+@Table(name = "product_tb")
+@Entity
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -83,8 +84,8 @@ public class Product {
         this.img = img;
         this.createdAt = createdAt;
     }
-
 }
+```
 
 > ## 5. 상품 목록보기
 
