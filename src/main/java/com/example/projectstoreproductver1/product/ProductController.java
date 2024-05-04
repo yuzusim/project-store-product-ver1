@@ -1,10 +1,13 @@
 package com.example.projectstoreproductver1.product;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Controller
@@ -13,7 +16,9 @@ public class ProductController {
 
     //상품목록보기
     @GetMapping({"/"})
-    public String list(){
+    public String list(HttpServletRequest request){
+        List<ProductResponse.MainDTO> productList = productService.findAll();
+        request.setAttribute("productList", productList);
         return "product/list";
     }
 

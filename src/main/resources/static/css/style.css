@@ -1,0 +1,32 @@
+/*상품등록부분*/
+.prod-info{_border-bottom:1px solid #ddd;}
+.prod-info th{padding: 25px 0;}
+.prodsav-W, .cart-W{align-items: center}
+.prodsave-L {width: 40%;}
+.prodsave-R {width: 60%;}
+.btn-apply{width:300px; padding:10px 0; margin:0 auto;}
+
+.row>* {
+    padding-right:0 !important;
+    padding-left:0 !important;
+}
+.cart-L{width:70%;}
+.cart-R{width:30%;}
+/*#212529;*/
+
+.decrease-btn{
+    border: 1px solid #ddd; background-color: #fff;
+    border-top-left-radius:5px;
+    border-bottom-left-radius:5px;
+}
+.increase-btn{
+    border: 1px solid #ddd; background-color: #fff;
+    border-top-right-radius:5px;
+    border-bottom-right-radius:5px;
+}
+.quantity{
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-left: none;
+    border-right: none;
+}
