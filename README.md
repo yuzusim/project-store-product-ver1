@@ -43,13 +43,13 @@ ___
 
 > ## 4. Product Entity 생성
 
-package com.example.projectstoreproductver1.product;
-import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-import java.sql.Timestamp;
+package com.example.projectstoreproductver1.product
+import jakarta.persistence.*
+import lombok.Builder
+import lombok.Data
+import lombok.NoArgsConstructor
+import org.hibernate.annotations.CreationTimestamp
+import java.sql.Timestamp
 
 @NoArgsConstructor
 @Data
